@@ -20,7 +20,12 @@ Never put Bunny API keys or account passwords in this repository. The Library ID
 
 Publish this folder's contents as the repository root using GitHub Pages. Every internal link and asset path is relative, including project links using `project.html?film=...`, so it works under a repository subdirectory or a custom domain.
 
-GitHub authentication and the final domain remain to be connected. This version has not been published to GitHub.
+Repository: https://github.com/up147174/nikolas-roumeliotis-portfolio
+
+GitHub Pages is configured to publish the `main` branch from the repository root:
+https://up147174.github.io/nikolas-roumeliotis-portfolio/
+
+Push updates to `main` to publish changes automatically. A custom domain and the Bunny showreel are still to be connected.
 
 ## Content and sources
 
