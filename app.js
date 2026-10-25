@@ -3,6 +3,7 @@ const page = document.body.dataset.page;
 let projects = [];
 let videoConfig = {};
 const esc = text => String(text).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const roleLabel = role => ({Editor:'Editing',Director:'Direction','Co-director':'Co-direction'}[role] || role);
 const arrow = '<span class="arrow" aria-hidden="true"></span>';
 
 $('#site-header').innerHTML = `<a class="wordmark" href="./index.html" aria-label="Nikolas Roumeliotis, home">NIKOLAS ROUMELIOTIS</a><nav aria-label="Main navigation">${['work','about','contact'].map(item => `<a href="./${item}.html"${page === item || (page === 'project' && item === 'work') ? ' aria-current="page"' : ''}>${item.toUpperCase()}</a>`).join('')}</nav>`;
@@ -30,7 +31,7 @@ function selectHome(index, loadVideo = true) {
   $('#film-image').src = project.image;
   $('#film-image').alt = project.alt;
   $('#film-title').textContent = project.title.toUpperCase();
-  $('#film-caption').textContent = `${project.format.toUpperCase()} / ${project.role === 'Editor' ? 'EDITING' : 'CO-DIRECTION'}${project.year ? ` / ${project.year}` : ''}`;
+  $('#film-caption').textContent = `${project.format.toUpperCase()} / ${roleLabel(project.role).toUpperCase()}${project.year ? ` / ${project.year}` : ''}`;
   $('#film-link').href = `./project.html?film=${encodeURIComponent(project.slug)}`;
   $('#film-link').innerHTML = `EXPLORE PROJECT ${arrow}`;
   document.querySelectorAll('.film-marker').forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
@@ -61,7 +62,7 @@ function home() {
 }
 
 function work() {
-  $('#works').innerHTML = projects.map((project, index) => `<a class="work-entry work-entry-${index}" href="./project.html?film=${encodeURIComponent(project.slug)}"><div class="work-image"><img src="${esc(project.image)}" alt="${esc(project.alt)}"${index ? ' loading="lazy"' : ''}><span class="work-explore">EXPLORE ${arrow}</span></div><div class="work-heading"><h2>${esc(project.title)}</h2>${arrow}</div><p>${esc(project.role === 'Editor' ? 'Editing' : 'Co-direction')} <span>/ ${esc(project.format)} ${project.year ? ` / ${esc(project.year)}` : ''}</span></p></a>`).join('');
+  $('#works').innerHTML = projects.map((project, index) => `<a class="work-entry work-entry-${index}" href="./project.html?film=${encodeURIComponent(project.slug)}"><div class="work-image"><img src="${esc(project.image)}" alt="${esc(project.alt)}"${index ? ' loading="lazy"' : ''}><span class="work-explore">EXPLORE ${arrow}</span></div><div class="work-heading"><h2>${esc(project.title)}</h2>${arrow}</div><p>${esc(roleLabel(project.role))} <span>/ ${esc(project.format)} ${project.year ? ` / ${esc(project.year)}` : ''}</span></p></a>`).join('');
 }
 
 function projectPage() {
@@ -74,7 +75,7 @@ function projectPage() {
   const project = projects[index];
   const next = projects[(index + 1) % projects.length];
   document.title = `${project.title} — Nikolas Roumeliotis`;
-  $('#project-content').innerHTML = `<div class="project-top"><a class="back-link" href="./work.html">ALL WORK</a><span>${project.year ? `${esc(project.year)} / ` : ''}${esc(project.format.toUpperCase())}</span></div><h1 class="project-title">${esc(project.title)}</h1><div class="project-media"><img src="${esc(project.image)}" alt="${esc(project.alt)}" id="project-still"><div id="project-player" class="film-player" hidden></div></div><div class="project-details"><div><p class="role-label">NIKOLAS’S ROLE</p><p class="project-role">${esc(project.role === 'Editor' ? 'Editing' : 'Co-direction')}</p></div><div><p class="project-summary">${esc(project.summary)}</p><dl class="credits">${project.credits.map(item => `<div><dt>${esc(item.label)}</dt><dd>${esc(item.value)}</dd></div>`).join('')}</dl>${project.originalUrl ? `<a class="line-link original-link" href="${esc(project.originalUrl)}" target="_blank" rel="noopener noreferrer">Original project ${arrow}</a>` : ''}</div></div><a class="next-project" href="./project.html?film=${encodeURIComponent(next.slug)}"><span>NEXT FILM</span><strong>${esc(next.title)}</strong>${arrow}</a>`;
+  $('#project-content').innerHTML = `<div class="project-top"><a class="back-link" href="./work.html">ALL WORK</a><span>${project.year ? `${esc(project.year)} / ` : ''}${esc(project.format.toUpperCase())}</span></div><h1 class="project-title">${esc(project.title)}</h1><div class="project-media"><img src="${esc(project.image)}" alt="${esc(project.alt)}" id="project-still"><div id="project-player" class="film-player" hidden></div></div><div class="project-details"><div><p class="role-label">NIKOLAS’S ROLE</p><p class="project-role">${esc(roleLabel(project.role))}</p></div><div><p class="project-summary">${esc(project.summary)}</p><dl class="credits">${project.credits.map(item => `<div><dt>${esc(item.label)}</dt><dd>${esc(item.value)}</dd></div>`).join('')}</dl>${project.originalUrl ? `<a class="line-link original-link" href="${esc(project.originalUrl)}" target="_blank" rel="noopener noreferrer">Original project ${arrow}</a>` : ''}</div></div>${project.gallery?.length ? `<section class="project-gallery" aria-label="Film stills">${project.gallery.map(still => `<img src="${esc(still.image)}" alt="${esc(still.alt)}" loading="lazy">`).join('')}</section>` : ''}<a class="next-project" href="./project.html?film=${encodeURIComponent(next.slug)}"><span>NEXT FILM</span><strong>${esc(next.title)}</strong>${arrow}</a>`;
   if (attachVideo($('#project-player'), project.bunnyVideoId, project.title)) $('#project-still').hidden = true;
 }
 

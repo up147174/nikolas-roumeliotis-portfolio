@@ -24,7 +24,8 @@
       }
     ],
     "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/my-portfolio/how-to-disappear",
-    "bunnyVideoId": ""
+    "bunnyVideoId": "f666f902-b651-4d1c-ae78-aa47cc3a2846",
+    "previewVideoId": "4c4eb9d4-94d7-414d-ba77-06b4dc6ea50d"
   },
   {
     "slug": "fee-fi-fo-fum",
@@ -70,7 +71,7 @@
       }
     ],
     "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/dierected-by/terra-nova",
-    "bunnyVideoId": ""
+    "bunnyVideoId": "b294eada-41cc-42ed-aaf7-498aeca73260"
   },
   {
     "slug": "apoplous",
@@ -121,5 +122,42 @@
     ],
     "originalUrl": "",
     "bunnyVideoId": ""
+  },
+  {
+    "slug": "klinon-asti",
+    "title": "Klinon Asti",
+    "year": "",
+    "role": "Director",
+    "format": "Film — Work in progress",
+    "image": "./assets/klinon-asti-01.jpg",
+    "alt": "Two men sit across a table in a neon-lit bar in Klinon Asti",
+    "description": "A film by Nikolas Roumeliotis. Work in progress.",
+    "summary": "A film directed by Nikolas Roumeliotis. Work in progress.",
+    "credits": [
+      {
+        "label": "Direction",
+        "value": "Nikolas Roumeliotis"
+      }
+    ],
+    "originalUrl": "",
+    "bunnyVideoId": "",
+    "gallery": [
+      {
+        "image": "./assets/klinon-asti-02.jpg",
+        "alt": "A man in a grey jacket in the neon-lit bar"
+      },
+      {
+        "image": "./assets/klinon-asti-03.jpg",
+        "alt": "A woman and man sit together on a covered sofa"
+      },
+      {
+        "image": "./assets/klinon-asti-04.jpg",
+        "alt": "Two figures in a dark interior"
+      },
+      {
+        "image": "./assets/klinon-asti-05.jpg",
+        "alt": "A man seated beside a covered figure"
+      }
+    ]
   }
 ]
