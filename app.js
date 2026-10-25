@@ -27,7 +27,6 @@ function attachVideo(container, videoId, title, autoplay = false) {
 }
 
 function home() {
-  $('#film-switcher').remove();
   $('#film-title').textContent = 'SHOWREEL';
   $('#film-caption').textContent = 'NIKOLAS ROUMELIOTIS / SHOWREEL';
   $('#film-link').href = './work.html';
