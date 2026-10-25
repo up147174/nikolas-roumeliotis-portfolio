@@ -50,20 +50,52 @@ function home() {
     $('#film-player').replaceChildren(video);
     $('#film-player').hidden = false;
     const play = () => video.play().catch(() => {});
+    const idleLimit = 2 * 60 * 1000;
+    let lastActivity = Date.now();
+    let idleTimer;
+    let idlePaused = false;
+    let userPaused = false;
+    const scheduleIdle = () => {
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => {
+        idlePaused = true;
+        video.pause();
+      }, idleLimit);
+    };
+    const onActivity = () => {
+      if (document.hidden) return;
+      lastActivity = Date.now();
+      const wasIdle = idlePaused;
+      idlePaused = false;
+      scheduleIdle();
+      if (wasIdle && !userPaused && !reducedMotion.matches) play();
+    };
+    ['pointermove', 'pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(type => {
+      document.addEventListener(type, onActivity, {passive:true});
+    });
+    scheduleIdle();
     if (!reducedMotion.matches) play();
     video.addEventListener('keydown', event => {
       if (event.code !== 'Space') return;
       event.preventDefault();
-      if (video.paused) play();
-      else video.pause();
+      userPaused = !video.paused;
+      if (userPaused) video.pause();
+      else { idlePaused = false; play(); }
     });
-    let resume = false;
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
-        resume = !video.paused;
+        clearTimeout(idleTimer);
         video.pause();
-      } else if (resume && !reducedMotion.matches) play();
+      } else {
+        idlePaused = Date.now() - lastActivity >= idleLimit;
+        if (!idlePaused && !userPaused && !reducedMotion.matches) {
+          play();
+          clearTimeout(idleTimer);
+          idleTimer = setTimeout(() => { idlePaused = true; video.pause(); }, idleLimit - (Date.now() - lastActivity));
+        }
+      }
     });
+    window.addEventListener('pagehide', () => { clearTimeout(idleTimer); video.pause(); });
     reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) video.pause(); });
   }
   $('#film-image').hidden = hasVideo;
