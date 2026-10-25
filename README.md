@@ -25,7 +25,9 @@ Repository: https://github.com/up147174/nikolas-roumeliotis-portfolio
 GitHub Pages is configured to publish the `main` branch from the repository root:
 https://up147174.github.io/nikolas-roumeliotis-portfolio/
 
-Push updates to `main` to publish changes automatically. A custom domain and the Bunny showreel are still to be connected.
+Push updates to `main` to publish changes automatically. Primary domain: https://roumeliotisnikolas.com/
+
+The `www` variant points to GitHub Pages and redirects to the primary domain. `CNAME` preserves the domain on future deployments. DNS is managed at Spaceship; HTTPS certificates are managed by GitHub Pages. The Bunny showreel is still to be connected.
 
 ## Content and sources
 
