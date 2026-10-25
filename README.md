@@ -1,6 +1,6 @@
 # Nikolas Roumeliotis — portfolio, version 2
 
-English, cinematic, static portfolio for GitHub Pages. Home, Work, Project, About and Contact are separate pages. Editing leads the selection; the title remains Filmmaker / Digital Artist.
+English, cinematic, static portfolio for GitHub Pages. Home, Work, Project, About and Contact are separate pages. Editing leads the selection; the title remains Filmmaker / Editor / Digital Artist.
 
 ## Local preview
 
