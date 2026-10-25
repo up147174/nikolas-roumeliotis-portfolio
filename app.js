@@ -103,7 +103,7 @@ function home() {
 }
 
 function work() {
-  $('#works').innerHTML = projects.map((project, index) => `<a class="work-entry work-entry-${index}" data-project="${esc(project.slug)}" href="./project.html?film=${encodeURIComponent(project.slug)}"><div class="work-image"><img src="${esc(project.image)}" alt="${esc(project.alt)}"${index ? ' loading="lazy"' : ''}><div class="work-preview" aria-hidden="true"></div><span class="work-explore">EXPLORE ${arrow}</span></div><div class="work-heading"><h2>${esc(project.title)}</h2>${arrow}</div><p>${esc(roleLabel(project.role))} <span>/ ${esc(project.format)}${project.year ? ` / ${esc(project.year)}` : ''}</span></p></a>`).join('');
+  $('#works').innerHTML = projects.map((project, index) => `<a class="work-entry work-entry-${index}" data-project="${esc(project.slug)}" href="./project.html?film=${encodeURIComponent(project.slug)}"><div class="work-image"><img src="${esc(project.image)}" alt="${esc(project.alt)}"${index ? ' loading="lazy"' : ''}><div class="work-preview" aria-hidden="true"></div></div><div class="work-heading"><h2>${esc(project.title)}</h2>${arrow}</div><p>${esc(roleLabel(project.role))} <span>/ ${esc(project.format)}${project.year ? ` / ${esc(project.year)}` : ''}</span></p></a>`).join('');
   const hover = matchMedia('(min-width: 601px) and (hover: hover) and (pointer: fine)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let activeCard = null;
