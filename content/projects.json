@@ -71,5 +71,43 @@
     ],
     "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/dierected-by/terra-nova",
     "bunnyVideoId": ""
+  },
+  {
+    "slug": "apoplous",
+    "title": "Apoplous",
+    "year": "",
+    "role": "Editor",
+    "format": "Short film",
+    "image": "./assets/apoplous-01.jpg",
+    "alt": "A frame from Apoplous",
+    "description": "Film editing by Nikolas Roumeliotis.",
+    "summary": "Editing by Nikolas Roumeliotis.",
+    "credits": [
+      {
+        "label": "Editing",
+        "value": "Nikolas Roumeliotis"
+      }
+    ],
+    "originalUrl": "",
+    "bunnyVideoId": "6484f7b7-af61-4ffd-a9c4-c5bedbacc2f9"
+  },
+  {
+    "slug": "hasa",
+    "title": "HASA",
+    "year": "",
+    "role": "Editor",
+    "format": "Music video",
+    "image": "./assets/hasa-01.jpg",
+    "alt": "A blue-lit frame from HASA",
+    "description": "Film editing by Nikolas Roumeliotis.",
+    "summary": "Editing by Nikolas Roumeliotis.",
+    "credits": [
+      {
+        "label": "Editing",
+        "value": "Nikolas Roumeliotis"
+      }
+    ],
+    "originalUrl": "",
+    "bunnyVideoId": ""
   }
 ]
