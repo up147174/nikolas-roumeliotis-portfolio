@@ -99,9 +99,21 @@
     "format": "Music video",
     "image": "./assets/hasa-01.jpg",
     "alt": "A blue-lit frame from HASA",
-    "description": "Film editing by Nikolas Roumeliotis.",
-    "summary": "Editing by Nikolas Roumeliotis.",
+    "description": "Yianna Terzi ft Billie Kark",
+    "summary": "Yianna Terzi ft Billie Kark. Directed by Aggelogiorgas, with cinematography by Thomas Zikos and editing by Nikolas Roumeliotis.",
     "credits": [
+      {
+        "label": "Artist",
+        "value": "Yianna Terzi ft Billie Kark"
+      },
+      {
+        "label": "Directed by",
+        "value": "Aggelogiorgas"
+      },
+      {
+        "label": "DoP",
+        "value": "Thomas Zikos"
+      },
       {
         "label": "Editing",
         "value": "Nikolas Roumeliotis"
