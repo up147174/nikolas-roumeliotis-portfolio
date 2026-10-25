@@ -31,7 +31,41 @@ function home() {
   $('#film-caption').textContent = 'NIKOLAS ROUMELIOTIS / SHOWREEL';
   $('#film-link').href = './work.html';
   $('#film-link').innerHTML = `EXPLORE THE WORK ${arrow}`;
-  const hasVideo = attachVideo($('#film-player'), videoConfig.showreelVideoId, 'Nikolas Roumeliotis — Showreel', true);
+  const hasVideo = Boolean(videoConfig.cdnHostname && videoConfig.showreelVideoId);
+  if (hasVideo) {
+    const video = document.createElement('video');
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    video.muted = true;
+    video.defaultMuted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.controls = false;
+    video.autoplay = !reducedMotion.matches;
+    video.preload = 'metadata';
+    video.poster = $('#film-image').src;
+    video.tabIndex = 0;
+    video.setAttribute('aria-label', 'Showreel. Press space to pause or play.');
+    const quality = matchMedia('(max-width: 600px)').matches ? '720' : '1080';
+    video.src = `https://${videoConfig.cdnHostname}/${encodeURIComponent(videoConfig.showreelVideoId)}/play_${quality}p.mp4`;
+    $('#film-player').replaceChildren(video);
+    $('#film-player').hidden = false;
+    const play = () => video.play().catch(() => {});
+    if (!reducedMotion.matches) play();
+    video.addEventListener('keydown', event => {
+      if (event.code !== 'Space') return;
+      event.preventDefault();
+      if (video.paused) play();
+      else video.pause();
+    });
+    let resume = false;
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        resume = !video.paused;
+        video.pause();
+      } else if (resume && !reducedMotion.matches) play();
+    });
+    reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) video.pause(); });
+  }
   $('#film-image').hidden = hasVideo;
   $('.cinema').classList.toggle('has-video', hasVideo);
 }
