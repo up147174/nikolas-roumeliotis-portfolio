@@ -1,23 +1,29 @@
-# Nikolas Roumeliotis — portfolio
+# Nikolas Roumeliotis — portfolio, version 2
 
-Static portfolio designed for GitHub Pages. The first version uses still frames from Nikolas's existing Wix portfolio. It includes three projects, a responsive layout and an active-project selector.
+English, cinematic, static portfolio for GitHub Pages. Home, Work, Project, About and Contact are separate pages. Editing leads the selection; the title remains Filmmaker / Digital Artist.
 
-## Preview locally
+## Local preview
 
-Run `python3 -m http.server 8765` in this folder, then open `http://localhost:8765/`. The content files are loaded over HTTP, so opening `index.html` directly as a file will not load the projects.
+Run `python3 -m http.server 8765` in this folder, then open `http://localhost:8765/`. The content uses JSON files and must be served over HTTP.
 
-## Add Bunny Stream videos
+## Videos
 
-1. Upload each film to Bunny Stream and copy its Video ID.
-2. Put your Bunny Stream Library ID in `content/video.json` as `bunnyLibraryId`.
-3. Put each corresponding Video ID in the project's `bunnyVideoId` field in `content/projects.json`.
+The preview currently shows genuine still frames from the existing Wix site. The showreel exists but has not yet been supplied.
 
-When both IDs exist, the active project uses the Bunny embed with `autoplay=true&muted=true&playsinline=true`. Browsers generally allow muted autoplay, but a visitor's browser or data-saving settings may prevent it. The player remains visible so they can start playback manually. Until video IDs are added, each project displays its original still.
+Add the public Bunny Stream Library ID to `content/video.json`, and the showreel Video ID to `showreelVideoId`. For individual films, add their Video IDs to `bunnyVideoId` in `content/projects.json`.
 
-Do not put a Bunny API key in these public files. Library IDs and video IDs are public embed identifiers. If you use domain restrictions in Bunny, allow your GitHub Pages and final domain origins.
+When configured, the homepage starts the showreel muted and inline. Individual project pages show the film player with visitor-controlled playback. Browser settings may prevent autoplay; Bunny's player controls remain available. Allow the final and preview domains in Bunny if domain restrictions are enabled.
 
-## Deploy on GitHub Pages
+Never put Bunny API keys or account passwords in this repository. The Library ID and Video IDs are public embed identifiers.
 
-This folder is the website root. Publish its contents from the repository root (`main` branch, `/root` directory) using GitHub Pages. Add the custom domain in GitHub Pages after purchasing it, then configure the DNS records with your registrar. Keep HTTPS enabled.
+## Deployment
 
-Project descriptions and credits reflect the existing Wix portfolio. Review all text before public launch. The current project links point to the existing Wix pages while the new site is being completed.
+Publish this folder's contents as the repository root using GitHub Pages. Every internal link and asset path is relative, including project links using `project.html?film=...`, so it works under a repository subdirectory or a custom domain.
+
+GitHub authentication and the final domain remain to be connected. This version has not been published to GitHub.
+
+## Content and sources
+
+Project names, dates, roles and credits come from Nikolas's public Wix portfolio. The About copy has been rewritten for the confirmed focus on editing and artist collaborations. Review the spelling of all third-party credits before final publication.
+
+Photographic stills originate from the user's public Wix portfolio. The generated mockup is a design reference only and is not shipped as website imagery. Barlow Condensed and DM Sans are self-hosted from Google Fonts; their SIL Open Font Licenses are included under `assets/fonts/`.
