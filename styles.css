@@ -12,4 +12,5 @@
 
 .project-gallery img:last-child:nth-child(even){grid-column:1/-1}
 .film-player>video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}.film-player>video:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
-.cinema .film-player>video{object-fit:cover;transform:scale(1.35)}
+.cinema .film-player>video{object-fit:cover;transform:none}
+.cinema.has-video{height:auto;min-height:0;max-height:none;aspect-ratio:12/5}
