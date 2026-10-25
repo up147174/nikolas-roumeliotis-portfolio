@@ -256,9 +256,13 @@
     "format": "Short film",
     "image": "./assets/apoplous-01.jpg",
     "alt": "A frame from Apoplous",
-    "description": "Film editing by Nikolas Roumeliotis.",
-    "summary": "Editing by Nikolas Roumeliotis.",
+    "description": "An elderly man prepares for his final voyage.",
+    "summary": "An elderly man prepares for his final voyage.",
     "credits": [
+      {
+        "label": "Directed by",
+        "value": "Giorgos Polimeropoulos"
+      },
       {
         "label": "Editing",
         "value": "Nikolas Roumeliotis"
