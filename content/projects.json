@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "terra-nova",
+    "title": "Terra Nova",
+    "year": "2024",
+    "role": "Co-director",
+    "format": "Short film",
+    "image": "./assets/terra-01.jpg",
+    "alt": "A deer stands on a hillside in a frame from Terra Nova",
+    "description": "A world at the edge of transformation.",
+    "summary": "A short film co-directed by Nikolas Roumeliotis and Agelogiorgas. Cinematography by Karolina Apakyan.",
+    "credits": [{"label":"Co-direction","value":"Nikolas Roumeliotis & Agelogiorgas"},{"label":"Cinematography","value":"Karolina Apakyan"}],
+    "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/dierected-by/terra-nova",
+    "bunnyVideoId": ""
+  },
+  {
+    "slug": "how-to-disappear",
+    "title": "How to Disappear",
+    "year": "2025",
+    "role": "Editor",
+    "format": "Short film",
+    "image": "./assets/disappear-01.jpg",
+    "alt": "A silhouetted figure against the sunset in How to Disappear",
+    "description": "A story told in the spaces between presence and absence.",
+    "summary": "A short film edited by Nikolas Roumeliotis, written and directed by Aggelogiorgas. Cinematography by Thomas Zikos.",
+    "credits": [{"label":"Editing","value":"Nikolas Roumeliotis"},{"label":"Written & directed by","value":"Aggelogiorgas"},{"label":"Cinematography","value":"Thomas Zikos"}],
+    "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/my-portfolio/how-to-disappear",
+    "bunnyVideoId": ""
+  },
+  {
+    "slug": "fee-fi-fo-fum",
+    "title": "Fee Fi Fo Fum",
+    "year": "2024",
+    "role": "Editor",
+    "format": "Short film",
+    "image": "./assets/fee-01.jpg",
+    "alt": "A cinematic frame from Fee Fi Fo Fum",
+    "description": "A dark, playful journey through another world.",
+    "summary": "A short film directed by Ioannis Mylonas, with cinematography by Vasilis Kourfouklas. Featured in Nikolas Roumeliotis’s editing portfolio.",
+    "credits": [{"label":"Direction","value":"Ioannis Mylonas"},{"label":"Cinematography","value":"Vasilis Kourfouklas"}],
+    "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/my-portfolio/zofos",
+    "bunnyVideoId": ""
+  }
+]
