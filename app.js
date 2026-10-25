@@ -26,43 +26,77 @@ function attachVideo(container, videoId, title, autoplay = false) {
   return true;
 }
 
-function selectHome(index, loadVideo = true) {
-  const project = projects[index];
-  $('#film-image').src = project.image;
-  $('#film-image').alt = project.alt;
-  $('#film-title').textContent = project.title.toUpperCase();
-  $('#film-caption').textContent = `${project.format.toUpperCase()} / ${roleLabel(project.role).toUpperCase()}${project.year ? ` / ${project.year}` : ''}`;
-  $('#film-link').href = `./project.html?film=${encodeURIComponent(project.slug)}`;
-  $('#film-link').innerHTML = `EXPLORE PROJECT ${arrow}`;
-  document.querySelectorAll('.film-marker').forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
-  const hasVideo = loadVideo && attachVideo($('#film-player'), project.previewVideoId || project.bunnyVideoId, `${project.title} — Preview`, true);
+function home() {
+  $('#film-switcher').remove();
+  $('#film-title').textContent = 'SHOWREEL';
+  $('#film-caption').textContent = 'NIKOLAS ROUMELIOTIS / SHOWREEL';
+  $('#film-link').href = './work.html';
+  $('#film-link').innerHTML = `EXPLORE THE WORK ${arrow}`;
+  const hasVideo = attachVideo($('#film-player'), videoConfig.showreelVideoId, 'Nikolas Roumeliotis — Showreel', true);
   $('#film-image').hidden = hasVideo;
   $('.cinema').classList.toggle('has-video', hasVideo);
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) $('#film-title').animate([{opacity:.35},{opacity:1}],{duration:400,easing:'cubic-bezier(.16,1,.3,1)'});
-}
-
-function home() {
-  const defaultIndex = Math.max(0, projects.findIndex(project => project.slug === 'how-to-disappear'));
-  $('#film-switcher').innerHTML = projects.map((project,index) => `<button class="film-marker" type="button" aria-label="Show ${esc(project.title)}" aria-pressed="false" data-film="${index}"><span></span><span class="marker-name">${esc(project.title)}</span></button>`).join('');
-  $('#film-switcher').addEventListener('click', event => {
-    const button = event.target.closest('[data-film]');
-    if (button) selectHome(Number(button.dataset.film));
-  });
-  selectHome(defaultIndex, !videoConfig.showreelVideoId);
-  if (videoConfig.showreelVideoId && videoConfig.bunnyLibraryId) {
-    attachVideo($('#film-player'), videoConfig.showreelVideoId, 'Nikolas Roumeliotis — Showreel', true);
-    $('#film-image').hidden = true;
-    $('.cinema').classList.add('has-video');
-    $('#film-title').textContent = 'SELECTED MOMENTS';
-    $('#film-caption').textContent = 'NIKOLAS ROUMELIOTIS / SHOWREEL';
-    $('#film-link').href = './work.html';
-    $('#film-link').innerHTML = `EXPLORE THE WORK ${arrow}`;
-    document.querySelectorAll('.film-marker').forEach(button => button.setAttribute('aria-pressed','false'));
-  }
 }
 
 function work() {
-  $('#works').innerHTML = projects.map((project, index) => `<a class="work-entry work-entry-${index}" href="./project.html?film=${encodeURIComponent(project.slug)}"><div class="work-image"><img src="${esc(project.image)}" alt="${esc(project.alt)}"${index ? ' loading="lazy"' : ''}><span class="work-explore">EXPLORE ${arrow}</span></div><div class="work-heading"><h2>${esc(project.title)}</h2>${arrow}</div><p>${esc(roleLabel(project.role))} <span>/ ${esc(project.format)} ${project.year ? ` / ${esc(project.year)}` : ''}</span></p></a>`).join('');
+  $('#works').innerHTML = projects.map((project, index) => `<a class="work-entry work-entry-${index}" data-project="${esc(project.slug)}" href="./project.html?film=${encodeURIComponent(project.slug)}"><div class="work-image"><img src="${esc(project.image)}" alt="${esc(project.alt)}"${index ? ' loading="lazy"' : ''}><div class="work-preview" aria-hidden="true"></div><span class="work-explore">EXPLORE ${arrow}</span></div><div class="work-heading"><h2>${esc(project.title)}</h2>${arrow}</div><p>${esc(roleLabel(project.role))} <span>/ ${esc(project.format)}${project.year ? ` / ${esc(project.year)}` : ''}</span></p></a>`).join('');
+  const hover = matchMedia('(min-width: 601px) and (hover: hover) and (pointer: fine)');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let activeCard = null;
+  let timer;
+  function stopPreview() {
+    clearTimeout(timer);
+    if (!activeCard) return;
+    const video = activeCard.querySelector('video');
+    if (video) {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      video.remove();
+    }
+    activeCard.classList.remove('is-previewing');
+    activeCard = null;
+  }
+  document.querySelectorAll('[data-project]').forEach(card => {
+    const project = projects.find(item => item.slug === card.dataset.project);
+    const id = project.previewVideoId || project.bunnyVideoId;
+    card.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'touch' || !hover.matches || reducedMotion.matches || !id || !videoConfig.cdnHostname) return;
+      stopPreview();
+      activeCard = card;
+      timer = setTimeout(() => {
+        if (activeCard !== card) return;
+        const video = document.createElement('video');
+        video.muted = true;
+        video.defaultMuted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.preload = 'none';
+        video.tabIndex = -1;
+        video.setAttribute('aria-hidden', 'true');
+        video.src = `https://${videoConfig.cdnHostname}/${encodeURIComponent(id)}/play_1080p.mp4`;
+        video.addEventListener('playing', () => {
+          if (activeCard === card) card.classList.add('is-previewing');
+          else video.pause();
+        });
+        video.addEventListener('error', () => { if (activeCard === card) stopPreview(); });
+        if (!project.previewVideoId) video.addEventListener('timeupdate', () => {
+          if (video.currentTime > 12) video.currentTime = 0;
+        });
+        card.querySelector('.work-preview').append(video);
+        video.play().catch(() => { if (activeCard === card) stopPreview(); });
+      }, 160);
+    });
+    card.addEventListener('pointerleave', () => { if (activeCard === card) stopPreview(); });
+  });
+  const observer = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.target === activeCard && !entry.isIntersecting)) stopPreview();
+  });
+  document.querySelectorAll('[data-project]').forEach(card => observer.observe(card));
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopPreview(); });
+  window.addEventListener('pagehide', stopPreview);
+  window.addEventListener('blur', stopPreview);
+  reducedMotion.addEventListener('change', stopPreview);
+  hover.addEventListener('change', stopPreview);
 }
 
 function projectPage() {
@@ -75,7 +109,7 @@ function projectPage() {
   const project = projects[index];
   const next = projects[(index + 1) % projects.length];
   document.title = `${project.title} — Nikolas Roumeliotis`;
-  $('#project-content').innerHTML = `<div class="project-top"><a class="back-link" href="./work.html">ALL WORK</a><span>${project.year ? `${esc(project.year)} / ` : ''}${esc(project.format.toUpperCase())}</span></div><h1 class="project-title">${esc(project.title)}</h1><div class="project-media"><img src="${esc(project.image)}" alt="${esc(project.alt)}" id="project-still"><div id="project-player" class="film-player" hidden></div></div><div class="project-details"><div><p class="role-label">NIKOLAS’S ROLE</p><p class="project-role">${esc(roleLabel(project.role))}</p></div><div><p class="project-summary">${esc(project.summary)}</p><dl class="credits">${project.credits.map(item => `<div><dt>${esc(item.label)}</dt><dd>${esc(item.value)}</dd></div>`).join('')}</dl>${project.originalUrl ? `<a class="line-link original-link" href="${esc(project.originalUrl)}" target="_blank" rel="noopener noreferrer">Original project ${arrow}</a>` : ''}</div></div>${project.gallery?.length ? `<section class="project-gallery" aria-label="Film stills">${project.gallery.map(still => `<img src="${esc(still.image)}" alt="${esc(still.alt)}" loading="lazy">`).join('')}</section>` : ''}<a class="next-project" href="./project.html?film=${encodeURIComponent(next.slug)}"><span>NEXT FILM</span><strong>${esc(next.title)}</strong>${arrow}</a>`;
+  $('#project-content').innerHTML = `<div class="project-top"><a class="back-link" href="./work.html">ALL WORK</a><span>${project.year ? `${esc(project.year)} / ` : ''}${esc(project.format.toUpperCase())}</span></div><h1 class="project-title">${esc(project.title)}</h1><div class="project-media"><img src="${esc(project.image)}" alt="${esc(project.alt)}" id="project-still"><div id="project-player" class="film-player" hidden></div></div><div class="project-details"><div><p class="role-label">NIKOLAS’S ROLE</p><p class="project-role">${esc(roleLabel(project.role))}</p></div><div><p class="project-summary">${esc(project.summary)}</p><dl class="credits">${project.credits.map(item => `<div><dt>${esc(item.label)}</dt><dd>${esc(item.value)}</dd></div>`).join('')}</dl>${project.originalUrl ? `<a class="line-link original-link" href="${esc(project.originalUrl)}" target="_blank" rel="noopener noreferrer">${esc(project.originalLinkLabel || 'Original project')} ${arrow}</a>` : ''}</div></div>${project.gallery?.length ? `<section class="project-gallery" aria-label="Film stills">${project.gallery.map(still => `<img src="${esc(still.image)}" alt="${esc(still.alt)}" loading="lazy">`).join('')}</section>` : ''}<a class="next-project" href="./project.html?film=${encodeURIComponent(next.slug)}"><span>NEXT FILM</span><strong>${esc(next.title)}</strong>${arrow}</a>`;
   if (attachVideo($('#project-player'), project.bunnyVideoId, project.title)) $('#project-still').hidden = true;
 }
 

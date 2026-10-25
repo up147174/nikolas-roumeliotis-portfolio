@@ -1,129 +1,5 @@
 [
   {
-    "slug": "how-to-disappear",
-    "title": "How to Disappear",
-    "year": "2025",
-    "role": "Editor",
-    "format": "Short film",
-    "image": "./assets/disappear-01.jpg",
-    "alt": "A silhouetted figure against the sunset in How to Disappear",
-    "description": "A story told in the spaces between presence and absence.",
-    "summary": "A short film edited by Nikolas Roumeliotis, written and directed by Aggelogiorgas. Cinematography by Thomas Zikos.",
-    "credits": [
-      {
-        "label": "Editing",
-        "value": "Nikolas Roumeliotis"
-      },
-      {
-        "label": "Written & directed by",
-        "value": "Aggelogiorgas"
-      },
-      {
-        "label": "Cinematography",
-        "value": "Thomas Zikos"
-      }
-    ],
-    "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/my-portfolio/how-to-disappear",
-    "bunnyVideoId": "f666f902-b651-4d1c-ae78-aa47cc3a2846",
-    "previewVideoId": "4c4eb9d4-94d7-414d-ba77-06b4dc6ea50d"
-  },
-  {
-    "slug": "fee-fi-fo-fum",
-    "title": "Fee Fi Fo Fum",
-    "year": "2024",
-    "role": "Editor",
-    "format": "Short film",
-    "image": "./assets/fee-01.jpg",
-    "alt": "A cinematic frame from Fee Fi Fo Fum",
-    "description": "A dark, playful journey through another world.",
-    "summary": "A short film directed by Ioannis Mylonas, with cinematography by Vasilis Kourfouklas. Featured in Nikolas Roumeliotis’s editing portfolio.",
-    "credits": [
-      {
-        "label": "Direction",
-        "value": "Ioannis Mylonas"
-      },
-      {
-        "label": "Cinematography",
-        "value": "Vasilis Kourfouklas"
-      }
-    ],
-    "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/my-portfolio/zofos",
-    "bunnyVideoId": ""
-  },
-  {
-    "slug": "terra-nova",
-    "title": "Terra Nova",
-    "year": "2024",
-    "role": "Co-director",
-    "format": "Short film",
-    "image": "./assets/terra-01.jpg",
-    "alt": "A deer stands on a hillside in a frame from Terra Nova",
-    "description": "A world at the edge of transformation.",
-    "summary": "A short film co-directed by Nikolas Roumeliotis and Agelogiorgas. Cinematography by Karolina Apakyan.",
-    "credits": [
-      {
-        "label": "Co-direction",
-        "value": "Nikolas Roumeliotis & Agelogiorgas"
-      },
-      {
-        "label": "Cinematography",
-        "value": "Karolina Apakyan"
-      }
-    ],
-    "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/dierected-by/terra-nova",
-    "bunnyVideoId": "b294eada-41cc-42ed-aaf7-498aeca73260"
-  },
-  {
-    "slug": "apoplous",
-    "title": "Apoplous",
-    "year": "",
-    "role": "Editor",
-    "format": "Short film",
-    "image": "./assets/apoplous-01.jpg",
-    "alt": "A frame from Apoplous",
-    "description": "Film editing by Nikolas Roumeliotis.",
-    "summary": "Editing by Nikolas Roumeliotis.",
-    "credits": [
-      {
-        "label": "Editing",
-        "value": "Nikolas Roumeliotis"
-      }
-    ],
-    "originalUrl": "",
-    "bunnyVideoId": "6484f7b7-af61-4ffd-a9c4-c5bedbacc2f9"
-  },
-  {
-    "slug": "hasa",
-    "title": "HASA",
-    "year": "",
-    "role": "Editor",
-    "format": "Music video",
-    "image": "./assets/hasa-01.jpg",
-    "alt": "A blue-lit frame from HASA",
-    "description": "Yianna Terzi ft Billie Kark",
-    "summary": "Yianna Terzi ft Billie Kark. Directed by Aggelogiorgas, with cinematography by Thomas Zikos and editing by Nikolas Roumeliotis.",
-    "credits": [
-      {
-        "label": "Artist",
-        "value": "Yianna Terzi ft Billie Kark"
-      },
-      {
-        "label": "Directed by",
-        "value": "Aggelogiorgas"
-      },
-      {
-        "label": "DoP",
-        "value": "Thomas Zikos"
-      },
-      {
-        "label": "Editing",
-        "value": "Nikolas Roumeliotis"
-      }
-    ],
-    "originalUrl": "",
-    "bunnyVideoId": ""
-  },
-  {
     "slug": "klinon-asti",
     "title": "Klinon Asti",
     "year": "",
@@ -157,6 +33,255 @@
       {
         "image": "./assets/klinon-asti-05.jpg",
         "alt": "A man seated beside a covered figure"
+      }
+    ]
+  },
+  {
+    "slug": "terra-nova",
+    "title": "Terra Nova",
+    "year": "2024",
+    "role": "Co-director",
+    "format": "Short film",
+    "image": "./assets/terra-01.jpg",
+    "alt": "A deer stands on a hillside in a frame from Terra Nova",
+    "description": "A world at the edge of transformation.",
+    "summary": "A short film co-directed by Nikolas Roumeliotis and Agelogiorgas. Cinematography by Karolina Apakyan.",
+    "credits": [
+      {
+        "label": "Co-direction",
+        "value": "Nikolas Roumeliotis & Agelogiorgas"
+      },
+      {
+        "label": "Cinematography",
+        "value": "Karolina Apakyan"
+      }
+    ],
+    "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/dierected-by/terra-nova",
+    "bunnyVideoId": "b294eada-41cc-42ed-aaf7-498aeca73260",
+    "gallery": [
+      {
+        "image": "./assets/terra-nova-still-01.jpg",
+        "alt": "Film still 1 from Terra Nova"
+      },
+      {
+        "image": "./assets/terra-nova-still-02.jpg",
+        "alt": "Film still 2 from Terra Nova"
+      },
+      {
+        "image": "./assets/terra-nova-still-03.jpg",
+        "alt": "Film still 3 from Terra Nova"
+      },
+      {
+        "image": "./assets/terra-nova-still-04.jpg",
+        "alt": "Film still 4 from Terra Nova"
+      },
+      {
+        "image": "./assets/terra-nova-still-05.jpg",
+        "alt": "Film still 5 from Terra Nova"
+      },
+      {
+        "image": "./assets/terra-nova-still-06.jpg",
+        "alt": "Film still 6 from Terra Nova"
+      }
+    ],
+    "previewVideoId": "7b95fd8e-e634-408a-94b3-98eb51602726"
+  },
+  {
+    "slug": "how-to-disappear",
+    "title": "How to Disappear",
+    "year": "2025",
+    "role": "Editor",
+    "format": "Short film",
+    "image": "./assets/disappear-01.jpg",
+    "alt": "A silhouetted figure against the sunset in How to Disappear",
+    "description": "A story told in the spaces between presence and absence.",
+    "summary": "A short film edited by Nikolas Roumeliotis, written and directed by Aggelogiorgas. Cinematography by Thomas Zikos.",
+    "credits": [
+      {
+        "label": "Editing",
+        "value": "Nikolas Roumeliotis"
+      },
+      {
+        "label": "Written & directed by",
+        "value": "Aggelogiorgas"
+      },
+      {
+        "label": "Cinematography",
+        "value": "Thomas Zikos"
+      }
+    ],
+    "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/my-portfolio/how-to-disappear",
+    "bunnyVideoId": "f666f902-b651-4d1c-ae78-aa47cc3a2846",
+    "previewVideoId": "4c4eb9d4-94d7-414d-ba77-06b4dc6ea50d",
+    "gallery": [
+      {
+        "image": "./assets/how-to-disappear-still-01.jpg",
+        "alt": "Film still 1 from How to Disappear"
+      },
+      {
+        "image": "./assets/how-to-disappear-still-02.jpg",
+        "alt": "Film still 2 from How to Disappear"
+      },
+      {
+        "image": "./assets/how-to-disappear-still-03.jpg",
+        "alt": "Film still 3 from How to Disappear"
+      },
+      {
+        "image": "./assets/how-to-disappear-still-04.jpg",
+        "alt": "Film still 4 from How to Disappear"
+      },
+      {
+        "image": "./assets/how-to-disappear-still-05.jpg",
+        "alt": "Film still 5 from How to Disappear"
+      },
+      {
+        "image": "./assets/how-to-disappear-still-06.jpg",
+        "alt": "Film still 6 from How to Disappear"
+      }
+    ]
+  },
+  {
+    "slug": "fee-fi-fo-fum",
+    "title": "Fee Fi Fo Fum",
+    "year": "2024",
+    "role": "Editor",
+    "format": "Short film",
+    "image": "./assets/fee-01.jpg",
+    "alt": "A cinematic frame from Fee Fi Fo Fum",
+    "description": "A dark, playful journey through another world.",
+    "summary": "A short film directed by Ioannis Mylonas, with cinematography by Vasilis Kourfouklas. Featured in Nikolas Roumeliotis’s editing portfolio.",
+    "credits": [
+      {
+        "label": "Direction",
+        "value": "Ioannis Mylonas"
+      },
+      {
+        "label": "Cinematography",
+        "value": "Vasilis Kourfouklas"
+      }
+    ],
+    "originalUrl": "https://nikolasroumeliotis9.wixsite.com/nikolasroumeliotis/portfolio-collections/my-portfolio/zofos",
+    "bunnyVideoId": "4ece8174-c6a4-4415-a591-209607ee49ec",
+    "gallery": [
+      {
+        "image": "./assets/fee-fi-fo-fum-still-01.jpg",
+        "alt": "Film still 1 from Fee Fi Fo Fum"
+      },
+      {
+        "image": "./assets/fee-fi-fo-fum-still-02.jpg",
+        "alt": "Film still 2 from Fee Fi Fo Fum"
+      },
+      {
+        "image": "./assets/fee-fi-fo-fum-still-03.jpg",
+        "alt": "Film still 3 from Fee Fi Fo Fum"
+      },
+      {
+        "image": "./assets/fee-fi-fo-fum-still-04.jpg",
+        "alt": "Film still 4 from Fee Fi Fo Fum"
+      },
+      {
+        "image": "./assets/fee-fi-fo-fum-still-05.jpg",
+        "alt": "Film still 5 from Fee Fi Fo Fum"
+      },
+      {
+        "image": "./assets/fee-fi-fo-fum-still-06.jpg",
+        "alt": "Film still 6 from Fee Fi Fo Fum"
+      }
+    ],
+    "previewVideoId": "394c71eb-391c-440f-925d-8b201fb4f140"
+  },
+  {
+    "slug": "hasa",
+    "title": "HASA",
+    "year": "2025",
+    "role": "Editor",
+    "format": "Music video",
+    "image": "./assets/hasa-still-01.jpg",
+    "alt": "A blue-lit frame from HASA",
+    "description": "Yianna Terzi ft Billie Kark",
+    "summary": "Yianna Terzi ft Billie Kark. Directed by Aggelogiorgas, with cinematography by Thomas Zikos and editing by Nikolas Roumeliotis.",
+    "credits": [
+      {
+        "label": "Artist",
+        "value": "Yianna Terzi ft Billie Kark"
+      },
+      {
+        "label": "Directed by",
+        "value": "Aggelogiorgas"
+      },
+      {
+        "label": "DoP",
+        "value": "Thomas Zikos"
+      },
+      {
+        "label": "Editing",
+        "value": "Nikolas Roumeliotis"
+      }
+    ],
+    "originalUrl": "https://www.youtube.com/watch?v=3llOCX_Lyes",
+    "bunnyVideoId": "",
+    "gallery": [
+      {
+        "image": "./assets/hasa-still-01.jpg",
+        "alt": "Film still 1 from HASA"
+      },
+      {
+        "image": "./assets/hasa-still-02.jpg",
+        "alt": "Film still 2 from HASA"
+      },
+      {
+        "image": "./assets/hasa-still-03.jpg",
+        "alt": "Film still 3 from HASA"
+      },
+      {
+        "image": "./assets/hasa-still-04.jpg",
+        "alt": "Film still 4 from HASA"
+      },
+      {
+        "image": "./assets/hasa-still-05.jpg",
+        "alt": "Film still 5 from HASA"
+      },
+      {
+        "image": "./assets/hasa-still-06.jpg",
+        "alt": "Film still 6 from HASA"
+      }
+    ],
+    "originalLinkLabel": "Watch the full music video"
+  },
+  {
+    "slug": "apoplous",
+    "title": "Apoplous",
+    "year": "",
+    "role": "Editor",
+    "format": "Short film",
+    "image": "./assets/apoplous-01.jpg",
+    "alt": "A frame from Apoplous",
+    "description": "Film editing by Nikolas Roumeliotis.",
+    "summary": "Editing by Nikolas Roumeliotis.",
+    "credits": [
+      {
+        "label": "Editing",
+        "value": "Nikolas Roumeliotis"
+      }
+    ],
+    "originalUrl": "",
+    "bunnyVideoId": "6484f7b7-af61-4ffd-a9c4-c5bedbacc2f9",
+    "gallery": [
+      {
+        "image": "./assets/apoplous-still-01.jpg",
+        "alt": "Film still 1 from Apoplous"
+      },
+      {
+        "image": "./assets/apoplous-still-02.jpg",
+        "alt": "Film still 2 from Apoplous"
+      },
+      {
+        "image": "./assets/apoplous-still-03.jpg",
+        "alt": "Film still 3 from Apoplous"
+      },
+      {
+        "image": "./assets/apoplous-still-04.jpg",
+        "alt": "Film still 4 from Apoplous"
       }
     ]
   }
