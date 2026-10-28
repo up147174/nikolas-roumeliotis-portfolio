@@ -4,7 +4,7 @@ let projects = [];
 let videoConfig = {};
 const esc = text => String(text).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const roleLabel = role => ({Editor:'Editing',Director:'Direction','Co-director':'Co-direction'}[role] || role);
-const arrow = '<span class="arrow" aria-hidden="true"></span>';
+const arrow = '';
 
 $('#site-header').innerHTML = `<a class="wordmark" href="./index.html" aria-label="Nikolas Roumeliotis, home">NIKOLAS ROUMELIOTIS</a><nav aria-label="Main navigation">${['work','about','contact'].map(item => `<a href="./${item}.html"${page === item || (page === 'project' && item === 'work') ? ' aria-current="page"' : ''}>${item.toUpperCase()}</a>`).join('')}</nav>`;
 $('#site-footer').innerHTML = `<span>© ${new Date().getFullYear()} NIKOLAS ROUMELIOTIS</span><span>ATHENS, GREECE</span><a href="mailto:nikolasroumeliotis@gmail.com">LET’S COLLABORATE ${arrow}</a>`;
