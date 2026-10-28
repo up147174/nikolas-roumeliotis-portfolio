@@ -14,3 +14,12 @@
 .film-player>video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}.film-player>video:focus-visible{outline:2px solid var(--ink);outline-offset:-3px}
 .cinema .film-player>video{object-fit:cover;transform:none}
 .cinema.has-video{height:auto;min-height:0;max-height:none;aspect-ratio:12/5}
+
+/* Quiet cinematic motion; layout, scroll and card titles stay still. */
+:root{--motion-feedback:240ms;--motion-preview:380ms;--ease-settle:cubic-bezier(.16,1,.3,1);--ease-state:cubic-bezier(.2,.65,.3,1)}
+nav a:after{transition:transform var(--motion-feedback) var(--ease-settle);transform-origin:right}
+nav a:hover:after,nav a[aria-current]:after{transform-origin:left}
+nav a:focus-visible:after{transform:scaleX(1);transition:none}
+.work-image img,.work-entry:hover img{transform:scale(1.35);transition:none}
+.work-preview{transition:opacity var(--motion-preview) var(--ease-state)}
+@media(prefers-reduced-motion:reduce){.work-preview,nav a:after{transition:none}}

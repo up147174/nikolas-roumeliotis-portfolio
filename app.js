@@ -104,6 +104,7 @@ function home() {
 
 function work() {
   $('#works').innerHTML = projects.map((project, index) => `<a class="work-entry work-entry-${index}" data-project="${esc(project.slug)}" href="./project.html?film=${encodeURIComponent(project.slug)}"><div class="work-image"><img src="${esc(project.image)}" alt="${esc(project.alt)}"${index ? ' loading="lazy"' : ''}><div class="work-preview" aria-hidden="true"></div></div><div class="work-heading"><h2>${esc(project.title)}</h2></div><p>${esc(roleLabel(project.role))} <span>/ ${esc(project.format)}${project.year ? ` / ${esc(project.year)}` : ''}</span></p></a>`).join('');
+  revealWork();
   const hover = matchMedia('(min-width: 601px) and (hover: hover) and (pointer: fine)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let activeCard = null;
@@ -187,7 +188,7 @@ async function init() {
     if (!Array.isArray(projects) || !projects.length) throw new Error('No projects available');
     if (page === 'home') home();
     if (page === 'work') work();
-    if (page === 'project') projectPage();
+    if (page === 'project') { projectPage(); titleEntrance(); }
   } catch (error) {
     const message = document.createElement('p');
     message.className = 'load-error';
@@ -197,3 +198,50 @@ async function init() {
   }
 }
 init();
+
+// Content stays visible if animation or observation is unavailable.
+const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+const motionAnimations = new Set();
+function entrance(element, frames, delay = 0, duration = 680) {
+  if (!element || motionPreference.matches || !element.animate) return;
+  const animation = element.animate(frames, {
+    duration, delay, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards'
+  });
+  motionAnimations.add(animation);
+  animation.finished.catch(() => {}).finally(() => motionAnimations.delete(animation));
+}
+function revealWork() {
+  if (motionPreference.matches || !('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const card = entry.target;
+      entrance(card.querySelector('.work-image'), [
+        {opacity: .65, clipPath: 'inset(0 0 7% 0)'},
+        {opacity: 1, clipPath: 'inset(0 0 0% 0)'}
+      ], Number(card.dataset.motionDelay), 820);
+      observer.unobserve(card);
+    });
+  }, {threshold: .08});
+  document.querySelectorAll('.work-entry').forEach((card, index) => {
+    card.dataset.motionDelay = window.innerWidth > 600 ? (index % 2) * 90 : 0;
+    observer.observe(card);
+  });
+  motionPreference.addEventListener('change', () => {
+    if (motionPreference.matches) observer.disconnect();
+  });
+}
+function titleEntrance() {
+  entrance($('.wordmark'), [
+    {opacity: .7, transform: 'translateY(6px)'},
+    {opacity: 1, transform: 'translateY(0)'}
+  ], 0, 520);
+  entrance($('.page-heading h1, .about-title, .contact-title, .project-title, .cinema-caption'), [
+    {opacity: .65, transform: 'translateY(14px)'},
+    {opacity: 1, transform: 'translateY(0)'}
+  ], 80);
+}
+motionPreference.addEventListener('change', () => {
+  if (motionPreference.matches) motionAnimations.forEach(animation => animation.cancel());
+});
+titleEntrance();
